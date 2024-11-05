@@ -8,7 +8,1960 @@
         "env": []
     },
     {
-        "id": "661dfd32e999f41b",
+        "id": "13e642adcfb85003",
+        "type": "subflow",
+        "name": "Preparacion Insert SQL (2)",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "72fc8876f6efb310"
+                    },
+                    {
+                        "id": "398b61b32c6a7c72"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 2210,
+                "y": 300,
+                "wires": [
+                    {
+                        "id": "cc502bc9558b0a3f",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1540,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "045c4ca3192dd832",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 950,
+                "y": 840,
+                "wires": [
+                    {
+                        "id": "8368a067c6ae9763",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1550,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "25224b5aeb17135b",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1650,
+                "y": 380,
+                "wires": [
+                    {
+                        "id": "15d3cd8af8544e31",
+                        "port": 0
+                    },
+                    {
+                        "id": "06f75bd8510fb586",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 2220,
+                "y": 360,
+                "wires": [
+                    {
+                        "id": "34fc522bc1c4b360",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 860,
+                "y": 440,
+                "wires": [
+                    {
+                        "id": "485f6afc5db49d01",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 330,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "b2bd9bac1b9ba943",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 340,
+                "y": 420,
+                "wires": [
+                    {
+                        "id": "a5217d412f6f7863",
+                        "port": 0
+                    },
+                    {
+                        "id": "b12033473a0080ec",
+                        "port": 0
+                    },
+                    {
+                        "id": "0ada1565da40ee03",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 930,
+                "y": 780,
+                "wires": [
+                    {
+                        "id": "de5dc46cefbaf441",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 410,
+                "y": 780,
+                "wires": [
+                    {
+                        "id": "bbca52ebdee6e83f",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "NOMBREEQP",
+                "type": "str",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-upload",
+                    "label": {
+                        "en-US": "Nombre Punto de Cargue"
+                    },
+                    "type": "select",
+                    "opts": {
+                        "opts": [
+                            {
+                                "l": {
+                                    "en-US": "Paletizadora"
+                                },
+                                "v": "paletizadora"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "Autopack"
+                                },
+                                "v": "autopack"
+                            },
+                            {
+                                "l": {
+                                    "en-US": "Cargador Manual"
+                                },
+                                "v": "cargadorManual"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#FFCC66",
+        "inputLabels": [
+            "Trigger"
+        ],
+        "outputLabels": [
+            "SQL Server",
+            "Resultado Split Influx",
+            "Consulta Total de sacos",
+            "Consulta Receta",
+            "Conversion Sacos a Kg",
+            "SQL Posgresql",
+            "Consultas Influx",
+            "Disparo Inicial - Fechas",
+            "Force OK",
+            "Resultados influx",
+            "Error"
+        ],
+        "status": {
+            "x": 300,
+            "y": 740,
+            "wires": [
+                {
+                    "id": "bbca52ebdee6e83f",
+                    "port": 0
+                },
+                {
+                    "id": "265577fe7eeb82cd",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "8a18dcb4bfa3a3eb",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "Influx-Ultracem",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://192.168.3.6:8086",
+        "timeout": "20",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "74b65acb32a98469",
+        "type": "sqlitedb",
+        "db": "c:/data/lite",
+        "mode": "RWC"
+    },
+    {
+        "id": "d8f678f2108dd916",
+        "type": "template",
+        "z": "13e642adcfb85003",
+        "name": "Consulta por hora",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "text",
+        "syntax": "mustache",
+        "template": "start = {{time.anteriorCorte}}\nstop = {{time.ultimoCorte}}\n\ninicio = from(bucket: \"empaque\")\n  |> range(start: start, stop: stop)  \n  |> filter(fn: (r) => r[\"_measurement\"] == \"{{equipo.nombre}}\")  \n  |> filter(fn: (r) => r[\"_field\"] == \"totalContador\")  \n  |> first()\n  |> yield(name:\"inicio\")\nfin = from(bucket: \"empaque\")  \n  |> range(start: start, stop: stop)  \n  |> filter(fn: (r) => r[\"_measurement\"] == \"{{equipo.nombre}}\")  \n  |> filter(fn: (r) => r[\"_field\"] == \"totalContador\")  \n  |> last()\n  |> yield(name:\"fin\")  \n\nfrom(bucket: \"empaque\")\n |> range(start: start, stop: stop) \n |> filter(fn: (r) => r[\"_measurement\"] == \"{{equipo.nombre}}\")\n |> last()\n |> yield(name: \"Data\")",
+        "output": "str",
+        "x": 590,
+        "y": 320,
+        "wires": [
+            [
+                "485f6afc5db49d01",
+                "ff814328269e09a3"
+            ]
+        ]
+    },
+    {
+        "id": "b2bd9bac1b9ba943",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "equipo.nombre",
+                "pt": "msg",
+                "to": "NOMBREEQP",
+                "tot": "env",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "time.anteriorCorte",
+                "pt": "flow",
+                "to": "time.ultimoCorte",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "time.ultimoCorte",
+                "pt": "flow",
+                "to": "time.ultimoCorte",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "time.anteriorCorte",
+                "pt": "msg",
+                "to": "time.anteriorCorte",
+                "tot": "flow",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "945606be55901adb"
+            ]
+        ]
+    },
+    {
+        "id": "ff814328269e09a3",
+        "type": "influxdb in",
+        "z": "13e642adcfb85003",
+        "influxdb": "8a18dcb4bfa3a3eb",
+        "name": "Influx",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "ultracem",
+        "x": 750,
+        "y": 340,
+        "wires": [
+            [
+                "65260a56315ab9b8",
+                "97d825bf011c9768"
+            ]
+        ]
+    },
+    {
+        "id": "eb078d8c369e4044",
+        "type": "split",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 810,
+        "y": 80,
+        "wires": [
+            [
+                "3a359858bf18acdb"
+            ]
+        ]
+    },
+    {
+        "id": "ed182c741b153045",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "Almacena Total de Sacos",
+        "rules": [
+            {
+                "t": "set",
+                "p": "data.totalSacos",
+                "pt": "flow",
+                "to": "payload.difference",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 160,
+        "wires": [
+            [
+                "1cdd942ce3649ac2"
+            ]
+        ],
+        "icon": "font-awesome/fa-save"
+    },
+    {
+        "id": "3a359858bf18acdb",
+        "type": "switch",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "property": "payload._field",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "puntoCargue",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "itemCemento",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "item2Cemento",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "rotura",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "totalContador",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "seleccionSilo",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "idReceta",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 7,
+        "x": 930,
+        "y": 80,
+        "wires": [
+            [
+                "045c4ca3192dd832"
+            ],
+            [
+                "045c4ca3192dd832"
+            ],
+            [
+                "045c4ca3192dd832"
+            ],
+            [
+                "045c4ca3192dd832"
+            ],
+            [
+                "045c4ca3192dd832"
+            ],
+            [
+                "045c4ca3192dd832"
+            ],
+            [
+                "045c4ca3192dd832"
+            ]
+        ]
+    },
+    {
+        "id": "15d3cd8af8544e31",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "Bolsas --> Kg",
+        "func": "const calculateKilograms = (payload) => {  \n  const { totalSacos, factor } = payload;  \n\n  // Convertir el número de bolsas en kilogramos  \n  const totalKg = totalSacos * factor;\n  const name=env.get(\"NOMBREEQP\") \n  const nombreGlobal = \"influx.\"+name+\".\"+\"item2Cemento\"\n  const item2Cemento  = global.get(nombreGlobal)\n  // Validar si existe item2 y distribuir los kilogramos  \n  if (item2Cemento === 0) {  \n    return {  \n      kgItem1: totalKg,  \n      kgItem2: 0  \n    };  \n  } else {  \n    const kgPerItem = totalKg / 2;  \n    return {  \n      kgItem1: kgPerItem,  \n      kgItem2: kgPerItem  \n    };  \n  }  \n};  \n\n// Uso de la función  \nmsg.payload = calculateKilograms(msg.data);  \nreturn msg;  \n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1520,
+        "y": 320,
+        "wires": [
+            [
+                "4035bfed5fec25ce"
+            ]
+        ],
+        "icon": "node-red/arrow-in.svg"
+    },
+    {
+        "id": "045c4ca3192dd832",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "Set Global",
+        "func": "const name=env.get(\"NOMBREEQP\")\nconst field = msg.payload._field\nconst nombreGlobal = \"influx.\"+name+\".\"+field\nglobal.set(nombreGlobal,msg.payload._value)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1130,
+        "y": 80,
+        "wires": [
+            [
+                "2ecf9b34cb6ac813"
+            ]
+        ]
+    },
+    {
+        "id": "33a00fb3effd6435",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "Set Global",
+        "func": "const name=env.get(\"NOMBREEQP\")\nconst nombreGlobal = \"influx.\"+name+\".\"+\"totalSacos\"\nglobal.set(nombreGlobal,msg.payload.difference)\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4035bfed5fec25ce",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "Set Global",
+        "func": "const name=env.get(\"NOMBREEQP\")\nconst nombreGlobal1 = \"influx.\"+name+\".kgItem1\"\nconst nombreGlobal2 = \"influx.\"+name+\".kgItem2\"\nglobal.set(nombreGlobal1,msg.payload.kgItem1)\nglobal.set(nombreGlobal2,msg.payload.kgItem2)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1730,
+        "y": 320,
+        "wires": [
+            [
+                "cc502bc9558b0a3f",
+                "34fc522bc1c4b360"
+            ]
+        ]
+    },
+    {
+        "id": "bbca52ebdee6e83f",
+        "type": "catch",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 140,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd8925971dcaf147",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "idReceta > Consulta",
+        "func": "\nmsg.params = {$idReceta: msg.payload._value}\n\nreturn msg\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 160,
+        "wires": [
+            [
+                "25224b5aeb17135b"
+            ]
+        ]
+    },
+    {
+        "id": "cc502bc9558b0a3f",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "Query SQL Insert",
+        "func": "const name=env.get(\"NOMBREEQP\")\nconst data = global.get(\"influx.\"+name)\n\n\nmsg.payload = \"INSERT INTO [dbo].[produccion_empaque] (cantidad_sacos,punto_cargue,item_saco,item_prod,item1_cem,cantkg_item1,item2_cem,cantkg_item2,rotura,totalizador,estado,silo) \"+ \n    \"VALUES ('\" + data.totalSacos + \"','\" + data.puntoCargue + \"','\" + data.itemSaco + \"','\" + data.idProdcutoFinal + \"','\" + data.itemCemento + \"','\" + data.kgItem1 + \"','\" + data.item2Cemento + \"','\" + data.kgItem2 + \"','\" + data.rotura + \"','\" + data.totalContador+\"','\"+0+\"','\" + data.seleccionSilo +\"');\"\nmsg.data = data\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1950,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "06f75bd8510fb586",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "data.totalSacos",
+                "pt": "msg",
+                "to": "data.totalSacos",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "data.factor",
+                "pt": "msg",
+                "to": "payload[0].factor",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1340,
+        "y": 320,
+        "wires": [
+            [
+                "15d3cd8af8544e31"
+            ]
+        ]
+    },
+    {
+        "id": "194e6e226012e3dd",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "Set Global",
+        "func": "const name=env.get(\"NOMBREEQP\")\n\nconst procudtofinal = \"influx.\" + name + \".\" + \"idProdcutoFinal\"\nglobal.set(procudtofinal, msg.payload[0].idProductoFinal)\n\nconst field = msg.payload[0].itemSaco\nconst itemSaco = \"influx.\" + name + \".\" + \"itemSaco\"\nglobal.set(itemSaco, msg.payload[0].itemSaco)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1330,
+        "y": 200,
+        "wires": [
+            [
+                "06f75bd8510fb586"
+            ]
+        ]
+    },
+    {
+        "id": "34fc522bc1c4b360",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "Query SQL Insert Postgresql",
+        "func": "const name=env.get(\"NOMBREEQP\")\nconst data = global.get(\"influx.\"+name)\n\n\nmsg.payload = \"INSERT INTO produccion_empaque (cantidad_sacos,punto_cargue,item_saco,item_prod,item1_cem,cantkg_item1,item2_cem,cantkg_item2,rotura,totalizador,estado,silo) \"+ \n    \"VALUES ('\" + data.totalSacos + \"','\" + data.puntoCargue + \"','\" + data.itemSaco + \"','\" + data.idProdcutoFinal + \"','\" + data.itemCemento + \"','\" + data.kgItem1 + \"','\" + data.item2Cemento + \"','\" + data.kgItem2 + \"','\" + data.rotura + \"','\" + data.totalContador + \"','\" + 0 + \"','\" + data.seleccionSilo +\"');\"\nmsg.data = data\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1980,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "485f6afc5db49d01",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "Debug",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "query",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "delete",
+                "p": "query",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cb895f84f657256b",
+        "type": "delay",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "0.5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "b2bd9bac1b9ba943"
+            ]
+        ]
+    },
+    {
+        "id": "91e4ad3cb6e7f9ed",
+        "type": "comment",
+        "z": "13e642adcfb85003",
+        "name": "Muestra para debug",
+        "info": "",
+        "x": 870,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "265577fe7eeb82cd",
+        "type": "status",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "scope": [
+            "ed182c741b153045"
+        ],
+        "x": 140,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e5c21bfe1f60cd18",
+        "type": "comment",
+        "z": "13e642adcfb85003",
+        "name": "Convetir Sacos a Kg",
+        "info": "",
+        "x": 1750,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "2ecf9b34cb6ac813",
+        "type": "switch",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "property": "payload._field",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "idReceta",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1110,
+        "y": 120,
+        "wires": [
+            [
+                "bd8925971dcaf147"
+            ]
+        ]
+    },
+    {
+        "id": "8ffcd876990f75d5",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "Mueve Data a Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.data",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 80,
+        "wires": [
+            [
+                "eb078d8c369e4044"
+            ]
+        ]
+    },
+    {
+        "id": "72fc8876f6efb310",
+        "type": "switch",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "property": "force",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "cb895f84f657256b"
+            ],
+            [
+                "a5217d412f6f7863"
+            ]
+        ]
+    },
+    {
+        "id": "a5217d412f6f7863",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "Forzado",
+        "rules": [
+            {
+                "t": "set",
+                "p": "equipo.nombre",
+                "pt": "msg",
+                "to": "NOMBREEQP",
+                "tot": "env",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 160,
+        "y": 320,
+        "wires": [
+            [
+                "d8f678f2108dd916"
+            ]
+        ]
+    },
+    {
+        "id": "86ea2f22b228ec2b",
+        "type": "template",
+        "z": "13e642adcfb85003",
+        "name": "Consulta por corte",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "text",
+        "syntax": "mustache",
+        "template": "import \"experimental\"\n\nstart = time(v: \"{{time.anteriorCorte}}\")\nstop = time(v: \"{{time.ultimoCorte}}\")\n\n// Restar 1 segundo al 'stop' usando experimental.addDuration()\nstopAdjusted = experimental.addDuration(d: -1000ms, to: stop)\n\ninicio = from(bucket: \"empaque\")\n|> range(start: start, stop: stopAdjusted)\n|> filter(fn: (r) => r[\"_measurement\"] == \"{{equipo.nombre}}\")\n|> filter(fn: (r) => r[\"_field\"] == \"totalContador\")\n|> first()\n|> yield(name: \"inicio\")\n\nfin = from(bucket: \"empaque\")\n|> range(start: start, stop: stopAdjusted)\n|> filter(fn: (r) => r[\"_measurement\"] == \"{{equipo.nombre}}\")\n|> filter(fn: (r) => r[\"_field\"] == \"totalContador\")\n|> last()\n|> yield(name: \"fin\")\n\nfrom(bucket: \"empaque\")\n|> range(start: start, stop: stopAdjusted)\n|> filter(fn: (r) => r[\"_measurement\"] == \"{{equipo.nombre}}\")\n|> last()\n|> yield(name: \"Data\")",
+        "output": "str",
+        "x": 590,
+        "y": 360,
+        "wires": [
+            [
+                "ff814328269e09a3"
+            ]
+        ]
+    },
+    {
+        "id": "945606be55901adb",
+        "type": "switch",
+        "z": "13e642adcfb85003",
+        "name": "Corte/Hora",
+        "property": "corte",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "d8f678f2108dd916"
+            ],
+            [
+                "86ea2f22b228ec2b"
+            ]
+        ]
+    },
+    {
+        "id": "0ada1565da40ee03",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "Almacena Totalizador Final",
+        "rules": [
+            {
+                "t": "set",
+                "p": "totalizadorInicial",
+                "pt": "flow",
+                "to": "totalizadorFinal",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "totalizadorFinal",
+                "pt": "flow",
+                "to": "payload2._value",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "final",
+                "pt": "msg",
+                "to": "totalizadorFinal",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "inicial",
+                "pt": "msg",
+                "to": "totalizadorInicial",
+                "tot": "flow",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1240,
+        "y": 660,
+        "wires": [
+            [
+                "b12033473a0080ec"
+            ]
+        ]
+    },
+    {
+        "id": "f841dd6d8d48db93",
+        "type": "switch",
+        "z": "13e642adcfb85003",
+        "name": "Totalizador Final",
+        "property": "payload2.result",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "fin",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1020,
+        "y": 660,
+        "wires": [
+            [
+                "0ada1565da40ee03"
+            ]
+        ]
+    },
+    {
+        "id": "ded72377c52f2d22",
+        "type": "split",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload2",
+        "x": 1010,
+        "y": 620,
+        "wires": [
+            [
+                "f841dd6d8d48db93"
+            ]
+        ]
+    },
+    {
+        "id": "398b61b32c6a7c72",
+        "type": "switch",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "property": "force",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 130,
+        "y": 620,
+        "wires": [
+            [
+                "795dd997ac847627"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "03ecf09834b93d7c",
+        "type": "template",
+        "z": "13e642adcfb85003",
+        "name": "Consulta por hora",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "text",
+        "syntax": "mustache",
+        "template": "start = {{time.anteriorCorte}}\nstop = {{time.ultimoCorte}}\n\ninicio = from(bucket: \"empaque\")\n  |> range(start: start, stop: stop)  \n  |> filter(fn: (r) => r[\"_measurement\"] == \"{{equipo.nombre}}\")  \n  |> filter(fn: (r) => r[\"_field\"] == \"totalContador\")  \n  |> first()\n  |> yield(name:\"inicio\")\nfin = from(bucket: \"empaque\")  \n  |> range(start: start, stop: stop)  \n  |> filter(fn: (r) => r[\"_measurement\"] == \"{{equipo.nombre}}\")  \n  |> filter(fn: (r) => r[\"_field\"] == \"totalContador\")  \n  |> last()\n  |> yield(name:\"fin\")  \n\nfrom(bucket: \"empaque\")\n |> range(start: start, stop: stop) \n |> filter(fn: (r) => r[\"_measurement\"] == \"{{equipo.nombre}}\")\n |> last()\n |> yield(name: \"Data\")",
+        "output": "str",
+        "x": 410,
+        "y": 620,
+        "wires": [
+            [
+                "760517541f5c7d8a"
+            ]
+        ]
+    },
+    {
+        "id": "760517541f5c7d8a",
+        "type": "influxdb in",
+        "z": "13e642adcfb85003",
+        "influxdb": "8a18dcb4bfa3a3eb",
+        "name": "",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "ultracem",
+        "x": 620,
+        "y": 620,
+        "wires": [
+            [
+                "45de46deba079b3f"
+            ]
+        ]
+    },
+    {
+        "id": "795dd997ac847627",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "equipo.nombre",
+                "pt": "msg",
+                "to": "NOMBREEQP",
+                "tot": "env",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 250,
+        "y": 580,
+        "wires": [
+            [
+                "03ecf09834b93d7c"
+            ]
+        ]
+    },
+    {
+        "id": "45de46deba079b3f",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "AsegurarPayload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload2",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 620,
+        "wires": [
+            [
+                "ded72377c52f2d22"
+            ]
+        ]
+    },
+    {
+        "id": "b12033473a0080ec",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "Total Sacos",
+        "func": "function calculateDifference(payload,inicial,final) {\n    const dataItems = payload.filter(item => item.result === \"Data\");\n    const inicio = inicial\n    const fin = final\n    \n    if (inicio && fin) {\n        const difference = fin - inicio;\n        return { difference, data: dataItems };\n    } else {\n        return null;\n    }\n}\n\nconst payload = msg.payload;\nconst inicial = msg.inicial\nconst final = msg.final\n\nconst { difference, data } = calculateDifference(payload,inicial,final);\n\nmsg.payload = { difference, data };\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "65260a56315ab9b8",
+        "type": "link out",
+        "z": "13e642adcfb85003",
+        "name": "Resultados Influx",
+        "mode": "link",
+        "links": [
+            "de5dc46cefbaf441"
+        ],
+        "x": 875,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "de5dc46cefbaf441",
+        "type": "link in",
+        "z": "13e642adcfb85003",
+        "name": "link in 5",
+        "links": [
+            "65260a56315ab9b8"
+        ],
+        "x": 795,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "390743b73d901377",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "Almacena Totalizador Final",
+        "rules": [
+            {
+                "t": "set",
+                "p": "totalizadorInicial",
+                "pt": "flow",
+                "to": "totalizadorFinal",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "totalizadorFinal",
+                "pt": "flow",
+                "to": "payload2._value",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "final",
+                "pt": "msg",
+                "to": "totalizadorFinal",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "inicial",
+                "pt": "msg",
+                "to": "totalizadorInicial",
+                "tot": "flow",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 240,
+        "wires": [
+            [
+                "03db467a83170d09"
+            ]
+        ]
+    },
+    {
+        "id": "fcc9b5669a1b9e3c",
+        "type": "switch",
+        "z": "13e642adcfb85003",
+        "name": "Totalizador Final",
+        "property": "payload2.result",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "fin",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 800,
+        "y": 260,
+        "wires": [
+            [
+                "390743b73d901377"
+            ]
+        ]
+    },
+    {
+        "id": "0823646b52f57628",
+        "type": "split",
+        "z": "13e642adcfb85003",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload2",
+        "x": 970,
+        "y": 300,
+        "wires": [
+            [
+                "fcc9b5669a1b9e3c"
+            ]
+        ]
+    },
+    {
+        "id": "97d825bf011c9768",
+        "type": "change",
+        "z": "13e642adcfb85003",
+        "name": "AsegurarPayload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload2",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 340,
+        "wires": [
+            [
+                "0823646b52f57628"
+            ]
+        ]
+    },
+    {
+        "id": "03db467a83170d09",
+        "type": "function",
+        "z": "13e642adcfb85003",
+        "name": "Total Sacos",
+        "func": "function calculateDifference(payload,inicial,final) {\n    const dataItems = payload.filter(item => item.result === \"Data\");\n    const inicio = inicial\n    const fin = final\n    \n    if (inicio && fin) {\n        const difference = fin - inicio;\n        return { difference, data: dataItems };\n    } else {\n        return null;\n    }\n}\n\nconst payload = msg.payload;\nconst inicial = msg.inicial\nconst final = msg.final\n\nconst { difference, data } = calculateDifference(payload,inicial,final);\n\nmsg.payload = { difference, data };\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 140,
+        "wires": [
+            [
+                "8ffcd876990f75d5",
+                "33a00fb3effd6435",
+                "ed182c741b153045"
+            ]
+        ]
+    },
+    {
+        "id": "1cdd942ce3649ac2",
+        "type": "link out",
+        "z": "13e642adcfb85003",
+        "name": "Consulta Total Sacos",
+        "mode": "link",
+        "links": [
+            "8368a067c6ae9763"
+        ],
+        "x": 865,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8368a067c6ae9763",
+        "type": "link in",
+        "z": "13e642adcfb85003",
+        "name": "link in 6",
+        "links": [
+            "1cdd942ce3649ac2"
+        ],
+        "x": 795,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "25224b5aeb17135b",
+        "type": "sqlite",
+        "z": "13e642adcfb85003",
+        "mydb": "74b65acb32a98469",
+        "sqlquery": "prepared",
+        "sql": "SELECT *  \nFROM Recetas  \nWHERE idReceta = $idReceta;",
+        "name": "localdatabase",
+        "x": 1300,
+        "y": 160,
+        "wires": [
+            [
+                "194e6e226012e3dd"
+            ]
+        ]
+    },
+    {
+        "id": "a0500a178c824b77",
+        "type": "change",
+        "z": "68a2a605c223bedb",
+        "name": "memoriaTiempo Horas",
+        "rules": [
+            {
+                "t": "set",
+                "p": "time.anteriorCorte",
+                "pt": "flow",
+                "to": "time.ultimoCorte",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "time.ultimoCorte",
+                "pt": "flow",
+                "to": "time.ultimoCorte",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "time.anteriorCorte",
+                "pt": "msg",
+                "to": "time.anteriorCorte",
+                "tot": "flow",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 180,
+        "wires": [
+            [
+                "bdbe680260c82f61"
+            ]
+        ]
+    },
+    {
+        "id": "b0ab4572c44df23c",
+        "type": "inject",
+        "z": "68a2a605c223bedb",
+        "name": "hora",
+        "props": [
+            {
+                "p": "time.ultimoCorte",
+                "v": "iso",
+                "vt": "date"
+            },
+            {
+                "p": "corte",
+                "v": "hora",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "0 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "a0500a178c824b77"
+            ]
+        ]
+    },
+    {
+        "id": "73b25cc8909e0824",
+        "type": "debug",
+        "z": "68a2a605c223bedb",
+        "name": "hora",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "bdbe680260c82f61",
+        "type": "switch",
+        "z": "68a2a605c223bedb",
+        "name": "",
+        "property": "corte",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "hora",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "corte",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 750,
+        "y": 180,
+        "wires": [
+            [
+                "4c9cbea37f3ce027"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d0431d079bcd91fd",
+        "type": "inject",
+        "z": "68a2a605c223bedb",
+        "name": "cambio",
+        "props": [
+            {
+                "p": "time.ultimoCorte",
+                "v": "iso",
+                "vt": "date"
+            },
+            {
+                "p": "corte",
+                "v": "corte",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "a0500a178c824b77"
+            ]
+        ]
+    },
+    {
+        "id": "71e9ec141d9318ad",
+        "type": "subflow:13e642adcfb85003",
+        "z": "68a2a605c223bedb",
+        "name": "",
+        "env": [
+            {
+                "name": "NOMBREEQP",
+                "value": null,
+                "type": "str"
+            }
+        ],
+        "x": 300,
+        "y": 860,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "801a60940640ee08",
+        "type": "template",
+        "z": "68a2a605c223bedb",
+        "name": "Consulta por hora",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "text",
+        "syntax": "mustache",
+        "template": "from(bucket: \"miobox\")\n  |> range(start: 2024-11-04T14:00:00.000Z, stop: 2024-11-04T15:00:00.000Z)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"PLC0K1 Task\")\n  |> filter(fn: (r) => r[\"Alias\"] == \"CGA10WF100_CounterA\" or r[\"Alias\"] == \"CGA10WF200_CounterA\" or r[\"Alias\"] == \"CGA10WF300_CounterA\" or r[\"Alias\"] == \"CGA10WF400_CounterA\")\n  |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)\n  |> first()\n  |> keep(columns: [\"_field\", \"_value\", \"result\", \"_measurement\", \"_time\"])  \n  |> yield(name: \"Firts\")\n\nfrom(bucket: \"miobox\")\n  |> range(start: 2024-11-04T14:00:00.000Z, stop: 2024-11-04T15:00:00.000Z)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"PLC0K1 Task\")\n  |> filter(fn: (r) => r[\"Alias\"] == \"CGA10WF100_CounterA\" or r[\"Alias\"] == \"CGA10WF200_CounterA\" or r[\"Alias\"] == \"CGA10WF300_CounterA\" or r[\"Alias\"] == \"CGA10WF400_CounterA\")\n  |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)\n  |> last()\n  |> keep(columns: [\"_field\", \"_value\", \"result\", \"_measurement\", \"_time\"])  \n  |> yield(name: \"Last\")\n\nfrom(bucket: \"miobox\")\n  |> range(start:2024-11-04T14:00:00.000Z, stop: 2024-11-04T15:00:00.000Z)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"PLC0K1 Task\")\n  |> filter(fn: (r) => r[\"_field\"] == \"EnergyL01\" or r[\"_field\"] == \"EnergyL02\" or r[\"_field\"] == \"EnergyL03\" or r[\"_field\"] == \"EnergyPSC\" or r[\"_field\"] == \"RecipeNumber\")\n  |> aggregateWindow(every: 1h, fn:mean, createEmpty: false)\n  |> yield(name: \"Energia\")",
+        "output": "str",
+        "x": 910,
+        "y": 100,
+        "wires": [
+            [
+                "b0c80734a28afd37"
+            ]
+        ]
+    },
+    {
+        "id": "4c9cbea37f3ce027",
+        "type": "template",
+        "z": "68a2a605c223bedb",
+        "name": "Consulta por hora",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "text",
+        "syntax": "mustache",
+        "template": "start = {{time.anteriorCorte}}\nstop = {{time.ultimoCorte}}\n\nfrom(bucket: \"miobox\")\n  |> range(start: start, stop: stop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"PLC0K1 Task\")\n  |> filter(fn: (r) => r[\"Alias\"] == \"CGA10WF100_CounterA\" or r[\"Alias\"] == \"CGA10WF200_CounterA\" or r[\"Alias\"] == \"CGA10WF300_CounterA\" or r[\"Alias\"] == \"CGA10WF400_CounterA\")\n  |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)\n  |> first()\n  |> keep(columns: [\"_field\", \"_value\", \"result\", \"_measurement\", \"_time\"])  \n  |> yield(name: \"Firts\")\n\nfrom(bucket: \"miobox\")\n  |> range(start: start, stop: stop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"PLC0K1 Task\")\n  |> filter(fn: (r) => r[\"Alias\"] == \"CGA10WF100_CounterA\" or r[\"Alias\"] == \"CGA10WF200_CounterA\" or r[\"Alias\"] == \"CGA10WF300_CounterA\" or r[\"Alias\"] == \"CGA10WF400_CounterA\")\n  |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)\n  |> last()\n  |> keep(columns: [\"_field\", \"_value\", \"result\", \"_measurement\", \"_time\"])  \n  |> yield(name: \"last\")\n  \nfrom(bucket: \"miobox\")\n  |> range(start: start, stop: stop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"PLC0K1 Task\")\n  |> filter(fn: (r) => r[\"_field\"] == \"EnergyL01\" or r[\"_field\"] == \"EnergyL02\" or r[\"_field\"] == \"EnergyL03\" or r[\"_field\"] == \"EnergyPSC\" or r[\"_field\"] == \"RecipeNumber\")\n  |> aggregateWindow(every: 1h, fn:mean, createEmpty: false)\n  |> yield(name: \"Energia\")",
+        "output": "str",
+        "x": 910,
+        "y": 140,
+        "wires": [
+            [
+                "b0c80734a28afd37"
+            ]
+        ]
+    },
+    {
+        "id": "b0c80734a28afd37",
+        "type": "influxdb in",
+        "z": "68a2a605c223bedb",
+        "influxdb": "8a18dcb4bfa3a3eb",
+        "name": "Influx PPAL",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "mioboxio",
+        "x": 1090,
+        "y": 120,
+        "wires": [
+            [
+                "2bee71ffb48da322"
+            ]
+        ]
+    },
+    {
+        "id": "961506c513af99f8",
+        "type": "catch",
+        "z": "68a2a605c223bedb",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 300,
+        "y": 480,
+        "wires": [
+            [
+                "d721b89a67b3fda3"
+            ]
+        ]
+    },
+    {
+        "id": "d721b89a67b3fda3",
+        "type": "debug",
+        "z": "68a2a605c223bedb",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "721ed54fe2747166",
+        "type": "inject",
+        "z": "68a2a605c223bedb",
+        "name": "hora",
+        "props": [
+            {
+                "p": "time.ultimoCorte",
+                "v": "2024-11-04T16:00:00.00Z",
+                "vt": "str"
+            },
+            {
+                "p": "corte",
+                "v": "hora",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dc29b0dc56b18dbe",
+        "type": "inject",
+        "z": "68a2a605c223bedb",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 790,
+        "y": 60,
+        "wires": [
+            [
+                "801a60940640ee08"
+            ]
+        ]
+    },
+    {
+        "id": "14a86102dee16a6d",
+        "type": "split",
+        "z": "68a2a605c223bedb",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 230,
+        "y": 640,
+        "wires": [
+            [
+                "569777c53e0811fa"
+            ]
+        ]
+    },
+    {
+        "id": "569777c53e0811fa",
+        "type": "switch",
+        "z": "68a2a605c223bedb",
+        "name": "Firts",
+        "property": "payload.result",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Firts",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Last",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Energia",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 290,
+        "y": 600,
+        "wires": [
+            [
+                "aeb003aa3b688b6e"
+            ],
+            [
+                "aeb003aa3b688b6e"
+            ],
+            [
+                "aeb003aa3b688b6e"
+            ]
+        ]
+    },
+    {
+        "id": "2bee71ffb48da322",
+        "type": "change",
+        "z": "68a2a605c223bedb",
+        "name": "clean",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "query",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1090,
+        "y": 160,
+        "wires": [
+            [
+                "89044520d0ec8081"
+            ]
+        ]
+    },
+    {
+        "id": "aeb003aa3b688b6e",
+        "type": "function",
+        "z": "68a2a605c223bedb",
+        "name": "function 1",
+        "func": "const payload = msg.payload\n\nconst name = \"influx\"+\".\"+payload._field+\".\"+payload.result\nconst value = payload._value \n\n\nflow.set(name,value)\nmsg.payload = name\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1a826624b0530a9f",
+        "type": "debug",
+        "z": "68a2a605c223bedb",
+        "name": "hora",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1670,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "89044520d0ec8081",
+        "type": "function",
+        "z": "68a2a605c223bedb",
+        "name": "Organiza",
+        "func": "const jsonData = msg.payload\nconst output = {  \n  data: {}, // Aquí almacenaremos los contadores y energías  \n  timeStampStart: null, // Este será el timestamp de inicio  \n  timeStampStop: null, // Este será el timestamp de parada  \n};  \n\n// Manejo de datos en forEach  \njsonData.forEach(item => {  \n  if (item.result === \"Energia\") {  \n    // Comprobar si es el 'RecipeNumber' especial  \n    if (item._field === \"RecipeNumber\") {  \n      output.data[item._field] = { value: item._value }; // Almacenar RecipeNumber  \n    } else {  \n      // Solo agregar un atributo \"value\" para las energías  \n      const field = item._field;  \n      output.data[field] = { value: item._value };  \n    }  \n\n    // Almacenar el timestamp de _start y _stop  \n    if (!output.timeStampStart) {  \n      output.timeStampStart = item._start; // Guardar el tiempo de inicio  \n    }  \n    output.timeStampStop = item._stop; // Guardar el tiempo de parada (se actualiza en cada iteración)  \n  } else {  \n    const field = item._field; // Obtener el nombre del campo (contador)  \n\n    // Inicializar el objeto para cada contador si no existe  \n    if (!output.data[field]) {  \n      output.data[field] = { Firts: 0, Last: 0, Count: 0 };  \n    }  \n\n    // Asignar el valor a Firts o Last  \n    if (item.result === \"Firts\") {  \n      output.data[field].Firts = item._value;  \n    } else if (item.result === \"Last\") {  \n      output.data[field].Last = item._value;  \n    }  \n  }  \n});  \n\n// Calcular el Count para los contadores  \nObject.entries(output.data).forEach(([key, value]) => {  \n  if (value.Firts !== undefined && value.Last !== undefined) {  \n    value.Count = value.Firts - value.Last; // Calcular el Count solo si Firts y Last existen  \n  }  \n});  \n\nmsg.payload = output; // Asignar el resultado a msg.payload  \n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 160,
+        "wires": [
+            [
+                "ba541dae5a1c5301"
+            ]
+        ]
+    },
+    {
+        "id": "ba541dae5a1c5301",
+        "type": "function",
+        "z": "68a2a605c223bedb",
+        "name": "Almacena",
+        "func": "const inputData = msg.payload\n\nconst measurement = \"mioboxComputed\"; // Nombre de la medida  \nconst timeStamp = new Date(inputData.timeStampStart); // Timestamp específico  \n\n// Arreglo para almacenar los datos organizados para InfluxDB  \nconst influxData = [];  \n\n// Procesar los contadores y energías  \nfor (const [key, value] of Object.entries(inputData.data)) {  \n  const tags = { device: key }; // Puedes agregar más tags aquí según sea necesario  \n  const fields = {};  \n\n  // Asignar campos según el tipo de datos  \n  if (key.startsWith(\"CGA\")) {  \n    fields.Firts = value.Firts;  \n    fields.Last = value.Last;  \n    fields.Count = value.Count;  \n  } else if (key.startsWith(\"Energy\")) {  \n    fields.value = value.value;  \n  } else if (key === \"RecipeNumber\") {  \n    fields.value = value.value; // Almacenar el RecipeNumber como un field  \n  }  \n\n  // Crear el objeto para esta entrada  \n  influxData.push({  \n    measurement,  \n    tags,  \n    fields,  \n    timestamp: timeStamp // Usar el timestamp específico aquí  \n  });  \n}  \n\n// Mostrar el resultado  \nmsg.payload = influxData; // Asignar el resultado a msg.payload  \nreturn msg; // Retornar el mensaje  ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 120,
+        "wires": [
+            [
+                "4f61ab906522c561"
+            ]
+        ]
+    },
+    {
+        "id": "8a46b47618894de2",
+        "type": "influxdb batch",
+        "z": "68a2a605c223bedb",
+        "influxdb": "8a18dcb4bfa3a3eb",
+        "precision": "",
+        "retentionPolicy": "",
+        "name": "Influx MioboxCumputed",
+        "database": "database",
+        "precisionV18FluxV20": "s",
+        "retentionPolicyV18Flux": "",
+        "org": "mioboxio",
+        "bucket": "mioboxComputed",
+        "x": 1550,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "122670a7e04248a7",
+        "type": "sqlite",
+        "z": "68a2a605c223bedb",
+        "mydb": "74b65acb32a98469",
+        "sqlquery": "fixed",
+        "sql": "CREATE TABLE measurements (  \n    id INTEGER PRIMARY KEY AUTOINCREMENT,  \n    measurement TEXT NOT NULL,  \n    tags TEXT NOT NULL,  \n    fields TEXT NOT NULL,  \n    timestamp TEXT NOT NULL  \n);",
+        "name": "",
+        "x": 450,
+        "y": 520,
+        "wires": [
+            [
+                "73b25cc8909e0824"
+            ]
+        ]
+    },
+    {
+        "id": "57a7cf60070f5d28",
+        "type": "inject",
+        "z": "68a2a605c223bedb",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 270,
+        "y": 520,
+        "wires": [
+            [
+                "122670a7e04248a7"
+            ]
+        ]
+    },
+    {
+        "id": "7bf5e1c14f875141",
+        "type": "template",
+        "z": "68a2a605c223bedb",
+        "name": "Consulta por hora",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "start = {{req.query.start}}\nstop = {{req.query.stop}}\n\nfrom(bucket: \"mioboxComputed\")\n  |> range(start: start, stop: stop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mioboxComputed\")\n  |> filter(fn: (r) => r[\"device\"] == \"CGA10WF100_CounterA\" or r[\"device\"] == \"CGA10WF200_CounterA\" or r[\"device\"] == \"CGA10WF300_CounterA\" or r[\"device\"] == \"CGA10WF400_CounterA\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Count\")\n  |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "output": "str",
+        "x": 1190,
+        "y": 640,
+        "wires": [
+            [
+                "78d0fad1fe067ab2"
+            ]
+        ]
+    },
+    {
+        "id": "78d0fad1fe067ab2",
+        "type": "influxdb in",
+        "z": "68a2a605c223bedb",
+        "influxdb": "8a18dcb4bfa3a3eb",
+        "name": "Influx API",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "mioboxio",
+        "x": 1360,
+        "y": 640,
+        "wires": [
+            [
+                "8dfa18d284c63b41"
+            ]
+        ]
+    },
+    {
+        "id": "fd8be48f38a63952",
+        "type": "debug",
+        "z": "68a2a605c223bedb",
+        "name": "hora",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "da24b41b71088b49",
         "type": "inject",
         "z": "68a2a605c223bedb",
         "name": "",
@@ -28,28 +1981,138 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 140,
-        "y": 80,
+        "x": 300,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8dfa18d284c63b41",
+        "type": "http response",
+        "z": "68a2a605c223bedb",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1500,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "2df87e919a16808d",
+        "type": "http in",
+        "z": "68a2a605c223bedb",
+        "name": "",
+        "url": "/api/transform/query",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 950,
+        "y": 640,
         "wires": [
             [
-                "1b5b632988644857"
+                "7bf5e1c14f875141"
             ]
         ]
     },
     {
-        "id": "1b5b632988644857",
-        "type": "debug",
+        "id": "98a8bbe283905adf",
+        "type": "catch",
         "z": "68a2a605c223bedb",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 320,
-        "y": 80,
+        "name": "",
+        "scope": [
+            "78d0fad1fe067ab2"
+        ],
+        "uncaught": false,
+        "x": 1350,
+        "y": 680,
+        "wires": [
+            [
+                "f10d94d105a08165"
+            ]
+        ]
+    },
+    {
+        "id": "f10d94d105a08165",
+        "type": "http response",
+        "z": "68a2a605c223bedb",
+        "name": "",
+        "statusCode": "400",
+        "headers": {},
+        "x": 1500,
+        "y": 680,
         "wires": []
+    },
+    {
+        "id": "905dec2c80c68ca0",
+        "type": "comment",
+        "z": "68a2a605c223bedb",
+        "name": "Parametros",
+        "info": " - `msg.time.ultimoCorte`\n - `msg.corte`\n\nOpciones:\nmsg.corte:\n 1.     corte - Cuando hay cambio de receta\n 2.     hora - Cuando es cambio por hora",
+        "x": 530,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "b583514a2d97c6d1",
+        "type": "change",
+        "z": "68a2a605c223bedb",
+        "name": "memoriaTiempo Corte",
+        "rules": [
+            {
+                "t": "set",
+                "p": "time.anteriorCorte",
+                "pt": "flow",
+                "to": "time.ultimoCorte",
+                "tot": "flow",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "time.ultimoCorte",
+                "pt": "flow",
+                "to": "time.ultimoCorte",
+                "tot": "msg",
+                "dc": true
+            },
+            {
+                "t": "set",
+                "p": "time.anteriorCorte",
+                "pt": "msg",
+                "to": "time.anteriorCorte",
+                "tot": "flow",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4f61ab906522c561",
+        "type": "function",
+        "z": "68a2a605c223bedb",
+        "name": "function 2",
+        "func": "// Suponiendo que msg.payload contiene el primer array con los datos de medición  \nconst measurements = msg.payload;  \n\n// El segundo array con datos de recetas (esto podría ser un input dinámico también)  \nconst recipes = [  \n    {\"id\":\"671eb9ab17ddde1eb080103a\",\"name\":\"HE5800\",\"erp_code\":133,\"_idControllerRecipe\":1,\"temp\":false,\"details\":\"Notas sobre la receta.\",\"deleted\":false,\"productionLineUse\":[{\"_id\":\"671eb84517ddde1eb0800f8f\",\"name\":\"MOLINO_1\"}],\"ingredients\":[{\"subname\":\"HE5800\",\"descriptionSubRecipe\":\"HE5800\",\"ingredientsList\":[{\"_idIngredient\":\"671eba0017ddde1eb08010e2\",\"_idMaterial\":\"671eb94317ddde1eb0800feb\",\"name\":\"CLINKER\",\"_idControllerMaterial\":0,\"type\":\"M\",\"unit\":{\"symbol\":\"%\"},\"deleted\":false,\"qty\":100,\"location\":{\"_id\":\"671eb8d317ddde1eb0800fb3\",\"name\":\"TOLVA 1\",\"id_controller\":0,\"description\":\"WF100 Clinker \",\"deleted\":false,\"productionLineUse\":[],\"createdAt\":\"2024-10-27T22:04:03.793Z\",\"updatedAt\":\"2024-10-27T22:04:03.793Z\"}}]}]},  \n    {\"id\":\"671eb9da17ddde1eb0801064\",\"name\":\"UG\",\"erp_code\":132,\"_idControllerRecipe\":2,\"temp\":false,\"details\":\"Notas sobre la receta.\",\"deleted\":false,\"productionLineUse\":[{\"_id\":\"671eb84517ddde1eb0800f8f\",\"name\":\"MOLINO_1\"}],\"ingredients\":[{\"subname\":\"UG\",\"descriptionSubRecipe\":\"UG 4060\",\"ingredientsList\":[{\"_idIngredient\":\"671eb9fc17ddde1eb08010b1\",\"_idMaterial\":\"671eb94317ddde1eb0800feb\",\"name\":\"CLINKER\",\"_idControllerMaterial\":0,\"type\":\"M\",\"unit\":{\"symbol\":\"%\"},\"deleted\":false,\"qty\":100,\"location\":{\"_id\":\"671eb8d317ddde1eb0800fb3\",\"name\":\"TOLVA 1\",\"id_controller\":0,\"description\":\"WF100 Clinker \",\"deleted\":false,\"productionLineUse\":[],\"createdAt\":\"2024-10-27T22:04:03.793Z\",\"updatedAt\":\"2024-10-27T22:04:03.793Z\"}}]}]}  \n];  \n\n// Buscar el objeto correspondiente para \"RecipeNumber\"  \nconst recipeNumberIndex = measurements.findIndex(measure => measure.tags.device === \"RecipeNumber\");  \n\nif (recipeNumberIndex >= 0) {  \n    const recipeValue = measurements[recipeNumberIndex].fields.value; // Obtener el valor de RecipeNumber  \n\n    // Buscar la receta que corresponde al RecipeNumber  \n    const recipeFound = recipes.find(recipe => recipe._idControllerRecipe === recipeValue);  \n\n    // Reemplazar el valor en RecipeNumber si se encontró la receta  \n    if (recipeFound) {  \n        const newFields = {  \n            value: recipeFound.erp_code, // Solo mantener erp_code en value  \n        };  \n\n        // Actualizar el campo tags con el name de la receta  \n        measurements[recipeNumberIndex].tags.name = recipeFound.name; // Usar name como tag  \n        measurements[recipeNumberIndex].fields = newFields; // Reemplazar fields con el nuevo value  \n    }  \n}  \n\n// Asignar el resultado final a msg.payload para pasar al siguiente nodo  \nmsg.payload = measurements;  \n\n// Retornar el mensaje modificado  \nreturn msg;  ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1440,
+        "y": 120,
+        "wires": [
+            [
+                "1a826624b0530a9f"
+            ]
+        ]
     }
 ]
